@@ -27,6 +27,19 @@ lib.callback.register('banks:server:GetPlayerJob', function(source)
     return playerJob
 end)
 
+lib.callback.register('banks:server:CheckCopCount', function(source)
+    local copCount = 0
+    local allPlayers = QBCore.Functions.GetQBPlayers()
+
+    for _, player in pairs(allPlayers) do
+        if player.PlayerData.job.type == 'leo' and v.PlayerData.job.onduty then
+            copCount = copCount + 1
+        end
+    end
+    
+    return copCount
+end)
+
 ----------
 --Events--
 ----------
@@ -101,14 +114,6 @@ RegisterServerEvent('banks:server:reward', function(lootbox, bankInfo, fullBankI
     if exports.ox_inventory:CanCarryItem(source, item, amount) then
         TriggerClientEvent("banks:client:RemoveZone", -1, zoneId)
         exports.ox_inventory:AddItem(source, item, amount)
-        if item == "money" then 
-            exports["vib-lib"]:economy({
-                ["resource"] = GetCurrentResourceName(),
-                ["name"] = "Reward",
-                ["amount"] = amount,
-                ["source"] = source,
-            })
-        end
     else
         lib.notify(source, {
             title = 'Attention',

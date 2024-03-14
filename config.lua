@@ -1,7 +1,7 @@
 Config = {}
 
 Config.Debug = false -- Setting true will enable visual of target zones
-Config.Cops = 0 -- Amount of cops required to be allowed to hack a vault
+Config.Cops = 1 -- Amount of cops required to be allowed to hack a vault
 Config.PoliceJob = "police" -- Name of police job
 Config.SecurityMaxLevel = 5 -- How many times can a vault security level be upgrade (It starts at 0 per restart)
 

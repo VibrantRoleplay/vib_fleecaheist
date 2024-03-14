@@ -59,36 +59,36 @@ RegisterNetEvent('banks:client:keypad', function(data)
         return
     end
 
-    QBCore.Functions.TriggerCallback('vib-lib:server:getCops', function(cops)
-        if cops >= Config.Cops then
-            exports['ps-ui']:Thermite(function(success)
-                if success then
-                    if bankSecurity.level == 0 then timeLeft = 0.5 end 
-                    if bankSecurity.level == 1 then timeLeft = 13 end 
-                    if bankSecurity.level == 2 then timeLeft = 11 end 
-                    if bankSecurity.level == 3 then timeLeft = 9 end 
-                    if bankSecurity.level == 4 then timeLeft = 7 end 
-                    if bankSecurity.level == 5 then timeLeft = 6 end
+    local copCount = lib.callback.await('banks:server:CheckCopCount', false)
+    
+    if copCount >= Config.Cops then
+        exports['ps-ui']:Thermite(function(success)
+            if success then
+                if bankSecurity.level == 0 then timeLeft = 0.5 end 
+                if bankSecurity.level == 1 then timeLeft = 13 end 
+                if bankSecurity.level == 2 then timeLeft = 11 end 
+                if bankSecurity.level == 3 then timeLeft = 9 end 
+                if bankSecurity.level == 4 then timeLeft = 7 end 
+                if bankSecurity.level == 5 then timeLeft = 6 end
 
-                    TriggerServerEvent('banks:server:OpenDoor', data, timeLeft)
-                    SpawnVaultGuards(data.bankInfo)
-                    exports['ps-dispatch']:FleecaBankRobbery(camId)
-                else
-                    lib.notify({
-                        title = "Attention",
-                        description = "You failed the hack!",
-                        type = 'error'
-                    })
-                end
-            end, 10, 5, 5)
-        else
-            lib.notify({
-                title = 'Attention',
-                description = 'Not enough cops!',
-                type = 'error'
-            })
-        end
-    end)
+                TriggerServerEvent('banks:server:OpenDoor', data, timeLeft)
+                SpawnVaultGuards(data.bankInfo)
+                exports['ps-dispatch']:FleecaBankRobbery(camId)
+            else
+                lib.notify({
+                    title = "Attention",
+                    description = "You failed the hack!",
+                    type = 'error'
+                })
+            end
+        end, 10, 5, 5)
+    else
+        lib.notify({
+            title = 'Attention',
+            description = 'Not enough cops!',
+            type = 'error'
+        })
+    end
 end)
 
 RegisterNetEvent('banks:client:CreateLockerZones', function(data)
