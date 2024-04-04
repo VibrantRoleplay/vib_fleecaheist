@@ -1,7 +1,7 @@
 Config = {}
 
 Config.Debug = false -- Setting true will enable visual of target zones
-Config.Cops = 1 -- Amount of cops required to be allowed to hack a vault
+Config.Cops = 2 -- Amount of cops required to be allowed to hack a vault
 Config.PoliceJob = "police" -- Name of police job
 Config.SecurityMaxLevel = 5 -- How many times can a vault security level be upgrade (It starts at 0 per restart)
 
@@ -9,7 +9,7 @@ Config.SecurityMaxLevel = 5 -- How many times can a vault security level be upgr
 --Items Needed--
 ----------------
 
-Config.SecurityUpgradeItem = "phone" -- Item needed to upgrade a vaults security level
+Config.SecurityUpgradeItem = "bankssecuritydevice" -- Item needed to upgrade a vaults security level
 Config.HackerItem = "raspberrypi" -- Item needed to hack a vault
 Config.LockerItem = "drill" -- Item needed to break into lockers
 
