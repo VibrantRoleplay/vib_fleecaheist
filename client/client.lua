@@ -64,7 +64,7 @@ RegisterNetEvent('banks:client:keypad', function(data)
     if copCount >= Config.Cops then
         exports['ps-ui']:Thermite(function(success)
             if success then
-                if bankSecurity.level == 0 then timeLeft = 0.5 end 
+                if bankSecurity.level == 0 then timeLeft = 15 end 
                 if bankSecurity.level == 1 then timeLeft = 13 end 
                 if bankSecurity.level == 2 then timeLeft = 11 end 
                 if bankSecurity.level == 3 then timeLeft = 9 end 
@@ -130,7 +130,7 @@ RegisterNetEvent('banks:client:lootbox', function(data)
         local effect = StartParticleFxLoopedAtCoord('ent_ray_finale_vault_sparks', bankInfo.coords.x, bankInfo.coords.y, bankInfo.coords.z, 0, 0, 0, 0x3F800000, 0, 0, 0, 0)
 
         if lib.progressCircle({
-            duration = 1500,
+            duration = math.random(7500, 15000),
             useWhileDead = false,
             canCancel = true,
             disable = {
