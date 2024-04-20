@@ -19,7 +19,7 @@ Fleeca bank heist resource
 
 # Why isn't there a random reward table for lockboxes?
 
-I haven't got that far yett and wanted to release this resource to get some early feedback
+I haven't got that far yet and wanted to release this resource to get some early feedback
 
 # Why is there no middle table loot like other bank heist resources?
 
@@ -32,3 +32,11 @@ We're aiming for a more realistic feel on some of our resources and as such, you
 # Why aren't you using [marked_bills] for your currency of dirty money?
 
 Whilst this resource is free and we'd love to see it on every server out there, before anything else we've designed it for OUR server specifically and with it being open source, you're free and encouraged to make changes!
+
+# DRILLING MINIGAME REQUIREMENTS
+
+https://github.com/meta-hub/fivem-drilling?tab=readme-ov-file
+
+https://github.com/meta-hub/meta_libs/releases
+
+Both of these are required for the mini game to work - If you'd rather stick with the progressbar then uncomment the progress bar code block from the client/client file and re-comment out the drilling block

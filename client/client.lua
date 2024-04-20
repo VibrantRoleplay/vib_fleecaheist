@@ -125,40 +125,99 @@ RegisterNetEvent('banks:client:lootbox', function(data)
     local drillItem = exports.ox_inventory:Search('count', Config.LockerItem)
 
     if drillItem >= 1 then
-        lib.requestNamedPtfxAsset("core")
-        UseParticleFxAssetNextCall('core')
-        local effect = StartParticleFxLoopedAtCoord('ent_ray_finale_vault_sparks', bankInfo.coords.x, bankInfo.coords.y, bankInfo.coords.z, 0, 0, 0, 0x3F800000, 0, 0, 0, 0)
 
-        if lib.progressCircle({
-            duration = math.random(7500, 15000),
-            useWhileDead = false,
-            canCancel = true,
-            disable = {
-                car = true,
-                move = true,
-                combat = true,
-            },
-            anim = {
-                dict = 'anim@heists@fleeca_bank@drilling',
-                clip = 'drill_straight_idle'
-            },
-            prop = {
-                model = `hei_prop_heist_drill`,
-                bone = 28422,
-                pos = vec3(0.00, 0, -0.01),
-                rot = vec3(-220.0, 90.0, -180.0)
-            },
-        }) then 
-            TriggerServerEvent('banks:server:reward', lootbox, bankInfo, fullBankInfo)
-            StopParticleFxLooped(effect, 0)
-        else
-            lib.notify({
-                title = 'Canceled',
-                description = 'Canceled',
-                type = 'error'
-            })
-            StopParticleFxLooped(effect, 0)
+        ----------------------------------------
+        --UNCOMMENT THIS TO USE A PROGRESS BAR--
+        ----------------------------------------
+
+        -- lib.requestNamedPtfxAsset("core")
+        -- UseParticleFxAssetNextCall('core')
+        -- local effect = StartParticleFxLoopedAtCoord('ent_ray_finale_vault_sparks', bankInfo.coords.x, bankInfo.coords.y, bankInfo.coords.z, 0, 0, 0, 0x3F800000, 0, 0, 0, 0)
+
+        -- if lib.progressCircle({
+        --     duration = math.random(7500, 15000),
+        --     useWhileDead = false,
+        --     canCancel = true,
+        --     disable = {
+        --         car = true,
+        --         move = true,
+        --         combat = true,
+        --     },
+        --     anim = {
+        --         dict = 'anim@heists@fleeca_bank@drilling',
+        --         clip = 'drill_straight_idle'
+        --     },
+        --     prop = {
+        --         model = `hei_prop_heist_drill`,
+        --         bone = 28422,
+        --         pos = vec3(0.00, 0, -0.01),
+        --         rot = vec3(-220.0, 90.0, -180.0)
+        --     },
+        -- }) then 
+        --     TriggerServerEvent('banks:server:reward', lootbox, bankInfo, fullBankInfo)
+        --     StopParticleFxLooped(effect, 0)
+        -- else
+        --     lib.notify({
+        --         title = 'Canceled',
+        --         description = 'Canceled',
+        --         type = 'error'
+        --     })
+        --     StopParticleFxLooped(effect, 0)
+        -- end
+
+        ------------------------------------------------------------------------
+        --UNCOMMENT THIS TO USE DRILL MINI-GAME, CHECK README FOR REQUIREMENTS--
+        ------------------------------------------------------------------------
+
+        while not HasAnimDictLoaded("anim_heist@hs3f@ig9_vault_drill@drill@") do
+            RequestAnimDict("anim_heist@hs3f@ig9_vault_drill@drill@")
+            Wait(1)
         end
+        while not HasModelLoaded(GetHashKey('hei_prop_heist_drill')) do
+            RequestModel(GetHashKey('hei_prop_heist_drill'))
+            Wait(1)
+        end
+        while not HasModelLoaded(GetHashKey('hei_p_m_bag_var22_arm_s')) do
+            RequestModel(GetHashKey('hei_p_m_bag_var22_arm_s'))
+            Wait(1)
+        end
+
+        local player = cache.ped
+        local playerCoords = GetEntityCoords(player) -- I suggest you save the coords in the beginning, and use them for all of the following scenes because it seems to cause problems if you use the current coords every time
+        local playerRotation = GetEntityRotation(player)
+        local drillObject = CreateObject(GetHashKey('hei_prop_heist_drill'), playerCoords, true, true, true) -- creating the drill's object 
+        local bagObject = CreateObject(GetHashKey('hei_p_m_bag_var22_arm_s'), playerCoords, true, true, true) -- creating the bag object
+        local drillScene = NetworkCreateSynchronisedScene(playerCoords.xy, playerCoords.z+.17, playerRotation, 2, true, false, -1, 0, 1.0)
+         -- you may notice I added 0.17 to the z-coordinate. Some scenes make the player go underground, so you may have to add or subtract some of the z-coordinate,
+         -- the value you need to subtract/add is mentioned in the SceneDirectorSynchedAnim.xml file as "deltaZ".
+        NetworkAddPedToSynchronisedScene(player, drillScene, "anim_heist@hs3f@ig9_vault_drill@drill@", "intro", 1.5, -4.0, 1, 16, 1148846080, 0) -- adding the ped to the scene
+        NetworkAddEntityToSynchronisedScene(drillObject, drillScene, "anim_heist@hs3f@ig9_vault_drill@drill@", "intro_drill_bit", 1.0, 1.0, 1) -- adding the drill to the scene
+        NetworkAddEntityToSynchronisedScene(bagObject, drillScene, "anim_heist@hs3f@ig9_vault_drill@drill@", "bag_intro", 1.0, 1.0, 1) -- adding the entity to the scene
+        NetworkAddSynchronisedSceneCamera(drillScene,"anim_heist@hs3f@ig9_vault_drill@drill@",'intro_cam') -- adding the cam
+        NetworkStartSynchronisedScene(drillScene) -- starting the scene
+        Wait(6000)
+
+        TriggerEvent("Drilling:Start",function(success)
+            if (success) then
+                TriggerServerEvent('banks:server:reward', lootbox, bankInfo, fullBankInfo)
+                NetworkStopSynchronisedScene(drillScene)
+                DeleteObject(drillObject) -- You have to remove the objects or they will fall down and just look wrong
+                DeleteObject(bagObject)
+                RemoveAnimDict('anim_heist@hs3f@ig9_vault_drill@drill@')
+                RemovePtfxAsset('core')
+            else
+                lib.notify({
+                    title = 'Failed',
+                    description = "That didn't go so well",
+                    type = 'error'
+                })
+                NetworkStopSynchronisedScene(drillScene)
+                DeleteObject(drillObject) -- You have to remove the objects or they will fall down and just look wrong
+                DeleteObject(bagObject)
+                RemoveAnimDict('anim_heist@hs3f@ig9_vault_drill@drill@')
+                RemovePtfxAsset('core')
+            end
+        end, bankInfo.coords)
     else
         lib.notify({
             title = 'Attention',
@@ -427,7 +486,7 @@ function SpawnVaultGuards(bankInfo)
 
     for i = 1, spawnAmount do
         lib.requestModel(bankInfo.vaultGuard.pedModel)
-        local bankPed = CreatePed(1, bankInfo.vaultGuard.pedModel, bankInfo.vaultGuard.spawnLocation, true)
+        local bankPed = CreatePed(1, bankInfo.vaultGuard.pedModel, bankInfo.vaultGuard.spawnLocation, false, true)
 
         GiveWeaponToPed(bankPed, "weapon_pistol", 100, false, true)
         TaskGoToCoordWhileAimingAtCoord(bankPed, playerCoords, playerCoords, 1.0, false, 2.5, 0.5, true, 0, 0)
