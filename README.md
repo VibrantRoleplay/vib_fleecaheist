@@ -33,6 +33,10 @@ We're aiming for a more realistic feel on some of our resources and as such, you
 
 Whilst this resource is free and we'd love to see it on every server out there, before anything else we've designed it for OUR server specifically and with it being open source, you're free and encouraged to make changes!
 
+# Why does your repo have random looking pushes
+
+That's because I'm also using this repo on a live server that is ever evolving and changing. Don't take my constant changes if you don't want them ;)
+
 # DRILLING MINIGAME REQUIREMENTS
 
 https://github.com/meta-hub/fivem-drilling?tab=readme-ov-file
