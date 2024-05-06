@@ -437,7 +437,7 @@ function OpenBankDoor(data)
             while entHeading ~= data.heading.open do
                 SetEntityHeading(object, entHeading - 10)
                 entHeading -= 0.5
-                print("entHeading: ", entHeading)
+
                 Wait(sleep)
             end
         end)
@@ -465,6 +465,7 @@ function CloseBankDoor(data)
                 end
                 SetEntityHeading(object, entHeading + 0.3)
                 entHeading += 0.5
+                
                 Wait(sleep)
             end
         end)
