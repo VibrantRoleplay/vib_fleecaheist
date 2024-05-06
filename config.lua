@@ -1,7 +1,7 @@
 Config = {}
 
-Config.Debug = false -- Setting true will enable visual of target zones
-Config.Cops = 3 -- Amount of cops required to be allowed to hack a vault
+Config.Debug = true -- Setting true will enable visual of target zones
+Config.Cops = 0 -- Amount of cops required to be allowed to hack a vault
 Config.PoliceJob = "police" -- Name of police job
 Config.SecurityMaxLevel = 5 -- How many times can a vault security level be upgrade (It starts at 0 per restart)
 
@@ -27,7 +27,7 @@ Config.Banks = {
             pedModel = "cs_casey", -- Ped model for armed guard
             spawnLocation = vector4(309.62, -278.95, 54.16, 64.86), -- Location where armed guard spawn
             hallwayCoords = vector3(307.56, -281.33, 54.16), -- Location for turning point in peds path to vault when opening door
-            vaultAccessDuration = 1, -- How long the vault stays open for when requested by police
+            vaultAccessDuration = 1, -- How long the vault stays open for when requested by police (In minutes)
         },
         ["vaultGuard"] = {
             pedModel = "cs_casey", -- Ped model of ped that unlocks vault for police
@@ -45,7 +45,7 @@ Config.Banks = {
                 ["size"] = vec3(0.30, 0.5, 0.65), -- Size of locker target zone
                 ["rotation"] = 339.5,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)} -- Rewards for this epcific locker
+                    [1] = { item = "money", amount = math.random(2250, 3750)} -- Rewards for this specific locker
                 }
             },
             [2] = {
@@ -53,7 +53,7 @@ Config.Banks = {
                 ["size"] = vec3(0.30, 0.5, 0.65),
                 ["rotation"] = 339.5,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [3] = {
@@ -61,7 +61,7 @@ Config.Banks = {
                 ["size"] = vec3(0.30, 0.5, 0.65),
                 ["rotation"] = 250.25,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [4] = {
@@ -69,7 +69,7 @@ Config.Banks = {
                 ["size"] = vec3(0.30, 0.5, 0.65),
                 ["rotation"] = 250.25,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [5] = {
@@ -77,7 +77,7 @@ Config.Banks = {
                 ["size"] = vec3(0.30, 0.5, 0.65),
                 ["rotation"] = 159.75,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [6] = {
@@ -85,7 +85,7 @@ Config.Banks = {
                 ["size"] = vec3(0.30, 0.5, 0.65),
                 ["rotation"] = 159.75,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [7] = {
@@ -93,7 +93,7 @@ Config.Banks = {
                 ["size"] = vec3(0.30, 0.5, 0.65),
                 ["rotation"] = 159.75,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [8] = {
@@ -101,7 +101,7 @@ Config.Banks = {
                 ["size"] = vec3(0.30, 0.5, 0.65),
                 ["rotation"] = 69.75,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [9] = {
@@ -109,7 +109,7 @@ Config.Banks = {
                 ["size"] = vec3(0.30, 0.5, 0.65),
                 ["rotation"] = 69.75,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
         }
@@ -121,7 +121,7 @@ Config.Banks = {
             pedModel = "cs_casey",
             spawnLocation = vector4(145.0, -1041.13, 29.36, 65.19),
             hallwayCoords = vector3(143.1, -1043.15, 29.36),
-            vaultAccessDuration = 1, -- Time in minutes
+            vaultAccessDuration = 1,
         },
         ["vaultGuard"] = {
             pedModel = "cs_casey",
@@ -135,43 +135,75 @@ Config.Banks = {
         ["camId"] = 22,
         ["lockers"] = {
             [1] = {
-                ["coords"] = vector3(149.9, -1044.75, 29.0),
-                ["size"] = vec3(0.85, 3.0, 4.0),
-                ["rotation"] = 70.0,
+                ["coords"] = vector3(149.05, -1044.3, 30.0),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 339.5,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [2] = {
-                ["coords"] = vector3(151.3, -1046.7, 29.0),
-                ["size"] = vec3(0.75, 1.8, 4.0),
-                ["rotation"] = 341.0,
+                ["coords"] = vector3(150.45, -1044.85, 29.85),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 339.5,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [3] = {
-                ["coords"] = vector3(150.7, -1050.0, 29.0),
-                ["size"] = vec3(0.70, 2.85, 4.0),
-                ["rotation"] = 340.0,
+                ["coords"] = vector3(151.6, -1046.2, 30.0),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 250.25,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [4] = {
-                ["coords"] = vector3(148.05, -1051.0, 29.0),
-                ["size"] = vec3(0.85, 3.75, 4.0),
-                ["rotation"] = 67.5,
+                ["coords"] = vector3(151.05, -1049.1, 29.9),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 250.25,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [5] = {
-                ["coords"] = vector3(146.6, -1048.4, 29.0),
-                ["size"] = vec3(0.85, 2.85, 4.0),
-                ["rotation"] = 338.5,
+                ["coords"] = vector3(150.5, -1050.75, 30.0),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [6] = {
+                ["coords"] = vector3(149.1, -1051.4, 29.9),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [7] = {
+                ["coords"] = vector3(146.9, -1050.6, 30.1),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [8] = {
+                ["coords"] = vector3(146.2, -1049.2, 29.9),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 69.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [9] = {
+                ["coords"] = vector3(146.75, -1047.75, 29.8),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 69.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
         }
@@ -183,7 +215,7 @@ Config.Banks = {
             pedModel = "cs_casey",
             spawnLocation = vector4(-2960.77, 478.65, 15.69, 177.21),
             hallwayCoords = vector3(-2958.39, 477.62, 15.69),
-            vaultAccessDuration = 1, -- Time in minutes
+            vaultAccessDuration = 1,
         },
         ["vaultGuard"] = {
             pedModel = "cs_casey",
@@ -197,43 +229,75 @@ Config.Banks = {
         ["camId"] = 25,
         ["lockers"] = {
             [1] = {
-                ["coords"] = vector3(-2958.9, 484.2, 16.0),
-                ["size"] = vec3(0.90, 2.75, 4.0),
-                ["rotation"] = 358.0,
+                ["coords"] = vector3(-2958.9, 483.4, 16.2),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 339.5,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [2] = {
-                ["coords"] = vector3(-2957.25, 486.2, 15.25),
-                ["size"] = vec3(1.75, 0.5, 4.0),
-                ["rotation"] = 341.0,
+                ["coords"] = vector3(-2958.8, 484.9, 16.4),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 339.5,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [3] = {
-                ["coords"] = vector3(-2954.0, 486.55, 16.0),
-                ["size"] = vec3(2.6, 0.90, 4.0),
-                ["rotation"] = 358.0,
+                ["coords"] = vector3(-2957.35, 486.25, 16.2),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 250.25,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [4] = {
-                ["coords"] = vector3(-2952.25, 484.2, 16.0),
-                ["size"] = vec3(0.55, 3.6, 4.0),
-                ["rotation"] = 357.25,
+                ["coords"] = vector3(-2954.8, 486.7, 16.2),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 250.25,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [5] = {
-                ["coords"] = vector3(-2954.3, 482.1, 16.0),
-                ["size"] = vec3(3, 1, 4.0),
-                ["rotation"] = 357.0,
+                ["coords"] = vector3(-2953.1, 486.6, 16.15),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [6] = {
+                ["coords"] = vector3(-2952.2, 485.4, 16.2),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [7] = {
+                ["coords"] = vector3(-2952.3, 483.2, 16.3),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [8] = {
+                ["coords"] = vector3(-2953.45, 482.1, 16.2),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 69.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [9] = {
+                ["coords"] = vector3(-2955.0, 482.2, 16.0),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 69.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
         }
@@ -245,7 +309,7 @@ Config.Banks = {
             pedModel = "cs_casey",
             spawnLocation = vector4(-355.58, -50.44, 49.03, 98.7),
             hallwayCoords = vector3(-357.65, -52.31, 49.03),
-            vaultAccessDuration = 1, -- Time in minutes
+            vaultAccessDuration = 1,
         },
         ["vaultGuard"] = {
             pedModel = "cs_casey",
@@ -259,43 +323,75 @@ Config.Banks = {
         ["camId"] = 23,
         ["lockers"] = {
             [1] = {
-                ["coords"] = vector3(-350.9, -53.8, 49.0),
-                ["size"] = vec3(2.9, 0.6, 3),
-                ["rotation"] = 340.75,
+                ["coords"] = vector3(-351.7, -53.55, 49.5),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 339.5,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [2] = {
-                ["coords"] = vector3(-349.4, -55.85, 48.5),
-                ["size"] = vec3(0.5, 2.0, 4.0),
-                ["rotation"] = 341.0,
+                ["coords"] = vector3(-350.2, -54.05, 49.35),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 339.5,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [3] = {
-                ["coords"] = vector3(-349.95, -59.1, 49.0),
-                ["size"] = vec3(0.45, 3.0, 4.0),
-                ["rotation"] = 340.0,
+                ["coords"] = vector3(-349.3, -55.8, 49.4),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 250.25,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [4] = {
-                ["coords"] = vector3(-352.6, -60.1, 48.65),
-                ["size"] = vec3(0.6, 3.7, 4.0),
-                ["rotation"] = 67.5,
+                ["coords"] = vector3(-349.55, -58.35, 49.3),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 250.25,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [5] = {
-                ["coords"] = vector3(-354.05, -57.7, 49.0),
-                ["size"] = vec3(0.55, 2.8, 4.0),
-                ["rotation"] = 338.5,
+                ["coords"] = vector3(-350.1, -59.85, 49.3),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [6] = {
+                ["coords"] = vector3(-351.4, -60.65, 49.35),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [7] = {
+                ["coords"] = vector3(-353.5, -59.9, 49.3),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [8] = {
+                ["coords"] = vector3(-354.45, -58.5, 49.4),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 69.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [9] = {
+                ["coords"] = vector3(-353.85, -56.8, 49.25),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 69.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
         }
@@ -307,7 +403,7 @@ Config.Banks = {
             pedModel = "cs_casey",
             spawnLocation = vector4(-1215.46, -334.55, 37.77, 98.7),
             hallwayCoords = vector3(-1215.26, -337.24, 37.78),
-            vaultAccessDuration = 1, -- Time in minutes
+            vaultAccessDuration = 1,
         },
         ["vaultGuard"] = {
             pedModel = "cs_casey",
@@ -321,43 +417,75 @@ Config.Banks = {
         ["camId"] = 24,
         ["lockers"] = {
             [1] = {
-                ["coords"] = vector3(-1209.8, -333.35, 38.0),
-                ["size"] = vec3(2.75, 0.55, 4.0),
-                ["rotation"] = 26.75,
+                ["coords"] = vector3(-1210.55, -333.75, 38.15),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 339.5,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250) }
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [2] = {
-                ["coords"] = vector3(-1207.25, -333.7, 38.0),
-                ["size"] = vec3(0.5, 1.7, 4.0),
-                ["rotation"] = 26.5,
+                ["coords"] = vector3(-1209.1, -333.1, 38.4),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 339.5,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250) } 
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [3] = {
-                ["coords"] = vector3(-1205.15, -336.3, 38.0),
-                ["size"] = vec3(0.7, 2.8, 2),
-                ["rotation"] = 27.5,
+                ["coords"] = vector3(-1207.2, -333.7, 38.15),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 250.25,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250) }
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [4] = {
-                ["coords"] = vector3(-1206.25, -339.25, 38.0),
-                ["size"] = vec3(0.75, 4.0, 4.0),
-                ["rotation"] = 117.0,
+                ["coords"] = vector3(-1205.5, -335.8, 38.2),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 250.25,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250) }
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [5] = {
-                ["coords"] = vector3(-1209.5, -338.5, 38.0),
-                ["size"] = vec3(0.75, 3.0, 4.0),
-                ["rotation"] = 27.0,
+                ["coords"] = vector3(-1204.9, -337.0, 38.2),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250) }
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [6] = {
+                ["coords"] = vector3(-1205.5, -338.65, 38.0),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [7] = {
+                ["coords"] = vector3(-1207.05, -339.45, 38.05),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [8] = {
+                ["coords"] = vector3(-1209.0, -339.1, 38.0),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 69.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [9] = {
+                ["coords"] = vector3(-1209.6, -337.8, 38.0),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 69.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
         }
@@ -369,7 +497,7 @@ Config.Banks = {
             pedModel = "cs_casey",
             spawnLocation = vector4(1179.27, 2708.9, 38.08, 241.55),
             hallwayCoords = vector3(1180.53, 2711.11, 38.08),
-            vaultAccessDuration = 1, -- Time in minutes
+            vaultAccessDuration = 1,
         },
         ["vaultGuard"] = {
             pedModel = "cs_casey",
@@ -378,168 +506,82 @@ Config.Banks = {
         ["object"] = `v_ilev_gb_vauldr`,
         ["heading"] = {
             closed = 90.0,
-            open = 160.0
+            open = 0.5
         },
         ["camId"] = 25,
         ["lockers"] = {
             [1] = {
-                ["coords"] = vector3(1173.65, 2710.55, 38.0),
-                ["size"] = vec3(2.75, 0.40, 4.0),
-                ["rotation"] = 0.0,
+                ["coords"] = vector3(1174.4, 2710.5, 38.35),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 339.5,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [2] = {
-                ["coords"] = vector3(1171.6, 2711.9, 38.0),
-                ["size"] = vec3(0.45, 1.8, 4.0),
-                ["rotation"] = 0.0,
+                ["coords"] = vector3(1173.0, 2710.45, 38.35),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 339.5,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [3] = {
-                ["coords"] = vector3(1171.05, 2715.15, 38.0),
-                ["size"] = vec3(0.40, 2.85, 4.0),
-                ["rotation"] = 0.0,
+                ["coords"] = vector3(1171.55, 2711.85, 38.35),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 250.25,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [4] = {
-                ["coords"] = vector3(1173.35, 2717.05, 38.0),
-                ["size"] = vec3(3.6, 0.5, 4.0),
-                ["rotation"] = 0.0,
+                ["coords"] = vector3(1170.95, 2714.3, 38.45),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 250.25,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [5] = {
-                ["coords"] = vector3(1175.6, 2715.2, 38.0),
-                ["size"] = vec3(0.5, 3.0, 4.0),
-                ["rotation"] = 0.0,
+                ["coords"] = vector3(1170.95, 2715.9, 38.3),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
                 ["rewards"] = {
-                    [1] = { item = "money", amount = math.random(1250, 2250)}
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [6] = {
+                ["coords"] = vector3(1172.2, 2717.1, 38.15),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [7] = {
+                ["coords"] = vector3(1174.2, 2717.1, 38.1),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 159.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [8] = {
+                ["coords"] = vector3(1175.55, 2716.05, 38.4),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 69.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
+                }
+            },
+            [9] = {
+                ["coords"] = vector3(1175.5, 2714.3, 38.4),
+                ["size"] = vec3(0.30, 0.5, 0.65),
+                ["rotation"] = 69.75,
+                ["rewards"] = {
+                    [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
         }
     },
-    -- [7] = {
-    --     ["label"] = "Pacific Bank",
-    --     ["coords"] = vector3(252.86, 228.52, 101.88),
-    --     ["security"] = {
-    --         pedModel = "cs_casey",
-    --         spawnLocation = vector4(255.23, 229.12, 101.68, 162.03),
-    --         hallwayCoords = vector3(255.21, 229.05, 101.68),
-    --         vaultAccessDuration = 15, -- Time in minutes
-    --     },
-    --     ["vaultGuard"] = {
-    --         pedModel = "cs_casey",
-    --         spawnLocation = vector3(262.89, 220.57, 101.68),
-    --     },
-    --     ["object"] = `v_ilev_bk_vaultdoor`,
-    --     ["heading"] = {
-    --         closed = 160.0, 
-    --         open = 15.0
-    --     },
-    --     ["camId"] = 27,
-    --     ["lockers"] = {
-    --         [1] = {
-    --             ["coords"] = vector3(258.63, 218.39, 101.68),
-    --             ["size"] = vec3(2.75, 0.40, 4.0),
-    --             ["rotation"] = 0.0,
-    --             ["rewards"] = {
-    --                 [1] = { item = "black_money", amount = math.random(5000, 25000)}
-    --             }
-    --         },
-    --         [2] = {
-    --             ["coords"] = vector3(259.64, 218.03, 101.68),
-    --             ["size"] = vec3(0.45, 1.8, 4.0),
-    --             ["rotation"] = 0.0,
-    --             ["rewards"] = {
-    --                 [1] = { item = "black_money", amount = math.random(5000, 25000)}
-    --             }
-    --         },
-    --         [3] = {
-    --             ["coords"] = vector3(261.02, 217.56, 101.68),
-    --             ["size"] = vec3(0.40, 2.85, 4.0),
-    --             ["rotation"] = 0.0,
-    --             ["rewards"] = {
-    --                 [1] = { item = "black_money", amount = math.random(5000, 25000)}
-    --             }
-    --         },
-    --         [4] = {
-    --             ["coords"] = vector3(256.77, 214.68, 101.68),
-    --             ["size"] = vec3(2.75, 0.40, 4.0),
-    --             ["rotation"] = 0.0,
-    --             ["rewards"] = {
-    --                 [1] = { item = "black_money", amount = math.random(5000, 25000)}
-    --             }
-    --         },
-    --         [5] = {
-    --             ["coords"] = vector3(257.79, 214.31, 101.68),
-    --             ["size"] = vec3(0.45, 1.8, 4.0),
-    --             ["rotation"] = 0.0,
-    --             ["rewards"] = {
-    --                 [1] = { item = "black_money", amount = math.random(5000, 25000)}
-    --             }
-    --         },
-    --         [6] = {
-    --             ["coords"] = vector3(259.58, 213.63, 101.68),
-    --             ["size"] = vec3(0.40, 2.85, 4.0),
-    --             ["rotation"] = 0.0,
-    --             ["rewards"] = {
-    --                 [1] = { item = "black_money", amount = math.random(5000, 25000)}
-    --             }
-    --         },
-    --         [7] = {
-    --             ["coords"] = vector3(263.74, 216.56, 101.68),
-    --             ["size"] = vec3(2.75, 0.40, 4.0),
-    --             ["rotation"] = 0.0,
-    --             ["rewards"] = {
-    --                 [1] = { item = "black_money", amount = math.random(5000, 25000)}
-    --             }
-    --         },
-    --         [8] = {
-    --             ["coords"] = vector3(265.61, 215.88, 101.68),
-    --             ["size"] = vec3(0.45, 1.8, 4.0),
-    --             ["rotation"] = 0.0,
-    --             ["rewards"] = {
-    --                 [1] = { item = "black_money", amount = math.random(5000, 25000)}
-    --             }
-    --         },
-    --         [9] = {
-    --             ["coords"] = vector3(266.34, 214.09, 101.68),
-    --             ["size"] = vec3(0.40, 2.85, 4.0),
-    --             ["rotation"] = 0.0,
-    --             ["rewards"] = {
-    --                 [1] = { item = "black_money", amount = math.random(5000, 25000)}
-    --             }
-    --         },
-    --         [10] = {
-    --             ["coords"] = vector3(265.79, 212.7, 101.68),
-    --             ["size"] = vec3(0.40, 2.85, 4.0),
-    --             ["rotation"] = 0.0,
-    --             ["rewards"] = {
-    --                 [1] = { item = "black_money", amount = math.random(5000, 25000)}
-    --             }
-    --         },
-    --         [11] = {
-    --             ["coords"] = vector3(264.39, 211.98, 101.68),
-    --             ["size"] = vec3(0.40, 2.85, 4.0),
-    --             ["rotation"] = 0.0,
-    --             ["rewards"] = {
-    --                 [1] = { item = "black_money", amount = math.random(5000, 25000)}
-    --             }
-    --         },
-    --         [12] = {
-    --             ["coords"] = vector3(262.37, 212.7, 101.68),
-    --             ["size"] = vec3(0.40, 2.85, 4.0),
-    --             ["rotation"] = 0.0,
-    --             ["rewards"] = {
-    --                 [1] = { item = "black_money", amount = math.random(5000, 25000)}
-    --             }
-    --         },
-    --     }
-    -- },
 }

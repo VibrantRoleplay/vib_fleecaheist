@@ -183,25 +183,24 @@ RegisterNetEvent('banks:client:lootbox', function(data)
         end
 
         local player = cache.ped
-        local playerCoords = GetEntityCoords(player) -- I suggest you save the coords in the beginning, and use them for all of the following scenes because it seems to cause problems if you use the current coords every time
+        local playerCoords = GetEntityCoords(player)
         local playerRotation = GetEntityRotation(player)
-        local drillObject = CreateObject(GetHashKey('hei_prop_heist_drill'), playerCoords, true, true, true) -- creating the drill's object 
-        local bagObject = CreateObject(GetHashKey('hei_p_m_bag_var22_arm_s'), playerCoords, true, true, true) -- creating the bag object
+        local drillObject = CreateObject(GetHashKey('hei_prop_heist_drill'), playerCoords, true, true, true)
+        local bagObject = CreateObject(GetHashKey('hei_p_m_bag_var22_arm_s'), playerCoords, true, true, true)
         local drillScene = NetworkCreateSynchronisedScene(playerCoords.xy, playerCoords.z+.17, playerRotation, 2, true, false, -1, 0, 1.0)
-         -- you may notice I added 0.17 to the z-coordinate. Some scenes make the player go underground, so you may have to add or subtract some of the z-coordinate,
-         -- the value you need to subtract/add is mentioned in the SceneDirectorSynchedAnim.xml file as "deltaZ".
-        NetworkAddPedToSynchronisedScene(player, drillScene, "anim_heist@hs3f@ig9_vault_drill@drill@", "intro", 1.5, -4.0, 1, 16, 1148846080, 0) -- adding the ped to the scene
-        NetworkAddEntityToSynchronisedScene(drillObject, drillScene, "anim_heist@hs3f@ig9_vault_drill@drill@", "intro_drill_bit", 1.0, 1.0, 1) -- adding the drill to the scene
-        NetworkAddEntityToSynchronisedScene(bagObject, drillScene, "anim_heist@hs3f@ig9_vault_drill@drill@", "bag_intro", 1.0, 1.0, 1) -- adding the entity to the scene
-        NetworkAddSynchronisedSceneCamera(drillScene,"anim_heist@hs3f@ig9_vault_drill@drill@",'intro_cam') -- adding the cam
-        NetworkStartSynchronisedScene(drillScene) -- starting the scene
+
+        NetworkAddPedToSynchronisedScene(player, drillScene, "anim_heist@hs3f@ig9_vault_drill@drill@", "intro", 1.5, -4.0, 1, 16, 1148846080, 0)
+        NetworkAddEntityToSynchronisedScene(drillObject, drillScene, "anim_heist@hs3f@ig9_vault_drill@drill@", "intro_drill_bit", 1.0, 1.0, 1)
+        NetworkAddEntityToSynchronisedScene(bagObject, drillScene, "anim_heist@hs3f@ig9_vault_drill@drill@", "bag_intro", 1.0, 1.0, 1)
+        NetworkAddSynchronisedSceneCamera(drillScene,"anim_heist@hs3f@ig9_vault_drill@drill@",'intro_cam')
+        NetworkStartSynchronisedScene(drillScene)
         Wait(6000)
 
         TriggerEvent("Drilling:Start",function(success)
             if (success) then
                 TriggerServerEvent('banks:server:reward', lootbox, bankInfo, fullBankInfo)
                 NetworkStopSynchronisedScene(drillScene)
-                DeleteObject(drillObject) -- You have to remove the objects or they will fall down and just look wrong
+                DeleteObject(drillObject)
                 DeleteObject(bagObject)
                 RemoveAnimDict('anim_heist@hs3f@ig9_vault_drill@drill@')
                 RemovePtfxAsset('core')
@@ -212,7 +211,7 @@ RegisterNetEvent('banks:client:lootbox', function(data)
                     type = 'error'
                 })
                 NetworkStopSynchronisedScene(drillScene)
-                DeleteObject(drillObject) -- You have to remove the objects or they will fall down and just look wrong
+                DeleteObject(drillObject)
                 DeleteObject(bagObject)
                 RemoveAnimDict('anim_heist@hs3f@ig9_vault_drill@drill@')
                 RemovePtfxAsset('core')
@@ -385,7 +384,7 @@ end)
 
 function AccessVault(data)
     local player = cache.ped
-    local playerCoords = (GetEntityCoords(player))
+    local playerCoords = GetEntityCoords(player)
     local pedCoords = data.bankInfo.security.spawnLocation
     local hallwayCoords = data.bankInfo.security.hallwayCoords
     local keypadCoords = data.bankInfo.coords
@@ -438,7 +437,7 @@ function OpenBankDoor(data)
             while entHeading ~= data.heading.open do
                 SetEntityHeading(object, entHeading - 10)
                 entHeading -= 0.5
-
+                print("entHeading: ", entHeading)
                 Wait(sleep)
             end
         end)
@@ -474,8 +473,9 @@ end
 
 function SpawnVaultGuards(bankInfo)
     local player = cache.ped
-    local playerCoords = (GetEntityCoords(player))
+    local playerCoords = GetEntityCoords(player)
     local bankSecurity = lib.callback.await('banks:server:GetbankSecurity', false, bankInfo.label)
+    local guardSpawn = bankInfo.vaultGuard.spawnLocation
     local spawnAmount = 1
 
     if bankSecurity.level < 3 then
@@ -486,7 +486,7 @@ function SpawnVaultGuards(bankInfo)
 
     for i = 1, spawnAmount do
         lib.requestModel(bankInfo.vaultGuard.pedModel)
-        local bankPed = CreatePed(1, bankInfo.vaultGuard.pedModel, bankInfo.vaultGuard.spawnLocation, false, true)
+        local bankPed = CreatePed(1, bankInfo.vaultGuard.pedModel, guardSpawn.x, guardSpawn.y, guardSpawn.z, guardSpawn.w, true)
 
         GiveWeaponToPed(bankPed, "weapon_pistol", 100, false, true)
         TaskGoToCoordWhileAimingAtCoord(bankPed, playerCoords, playerCoords, 1.0, false, 2.5, 0.5, true, 0, 0)
