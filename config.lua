@@ -1,9 +1,10 @@
 Config = {}
 
 Config.Debug = true -- Setting true will enable visual of target zones
-Config.Cops = 3 -- Amount of cops required to be allowed to hack a vault
+Config.Cops = 0 -- Amount of cops required to be allowed to hack a vault
 Config.PoliceJob = "police" -- Name of police job
 Config.SecurityMaxLevel = 5 -- How many times can a vault security level be upgrade (It starts at 0 per restart)
+Config.DoorOpenDelayInSeconds = 1
 
 ----------------
 --Items Needed--
@@ -11,7 +12,7 @@ Config.SecurityMaxLevel = 5 -- How many times can a vault security level be upgr
 
 Config.SecurityUpgradeItem = "bankssecuritydevice" -- Item needed to upgrade a vaults security level
 Config.HackerItem = "raspberrypi" -- Item needed to hack a vault
-Config.LockerItem = "drill" -- Item needed to break into lockers
+Config.LockerItem = "diamonddrill" -- Item needed to break into lockers
 
 Config.PoliceMainframe = { -- Location where police can view cameras and acquire the mainframe code, needed to upgrade the vault secuirty (Code changes per restart)
     [1] = {
@@ -22,7 +23,7 @@ Config.PoliceMainframe = { -- Location where police can view cameras and acquire
 Config.Banks = {
     [1] = {
         ["label"] = "Alta Street Fleeca", -- Name of bank (Unique)
-        ["coords"] = vector3(311.15, -284.49, 54.16), -- Location of vault keypad
+        ["coords"] = vector3(311.52, -284.57, 54.42), -- Location of vault keypad
         ["security"] = {
             pedModel = "cs_casey", -- Ped model for armed guard
             spawnLocation = vector4(309.62, -278.95, 54.16, 64.86), -- Location where armed guard spawn
@@ -46,7 +47,7 @@ Config.Banks = {
                 ["rotation"] = 339.5,
                 ["rewards"] = {
                     [1] = { item = "money", amount = math.random(2250, 3750)} -- Rewards for this specific locker
-                }
+                },
             },
             [2] = {
                 ["coords"] = vector3(310.5, -287.8, 54.4),
@@ -116,7 +117,7 @@ Config.Banks = {
     },
     [2] = {
         ["label"] = "Legion Square Fleeca",
-        ["coords"] = vector3(146.85, -1046.06, 29.36),
+        ["coords"] = vector3(147.19, -1046.19, 29.61),
         ["security"] = {
             pedModel = "cs_casey",
             spawnLocation = vector4(145.0, -1041.13, 29.36, 65.19),
@@ -137,7 +138,7 @@ Config.Banks = {
             [1] = {
                 ["coords"] = vector3(149.05, -1044.3, 30.0),
                 ["size"] = vec3(0.30, 0.5, 0.65),
-                ["rotation"] = 339.5,
+                ["rotation"] = 250.0,
                 ["rewards"] = {
                     [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
@@ -145,7 +146,7 @@ Config.Banks = {
             [2] = {
                 ["coords"] = vector3(150.45, -1044.85, 29.85),
                 ["size"] = vec3(0.30, 0.5, 0.65),
-                ["rotation"] = 339.5,
+                ["rotation"] = 250.0,
                 ["rewards"] = {
                     [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
@@ -153,7 +154,7 @@ Config.Banks = {
             [3] = {
                 ["coords"] = vector3(151.6, -1046.2, 30.0),
                 ["size"] = vec3(0.30, 0.5, 0.65),
-                ["rotation"] = 250.25,
+                ["rotation"] = 335.0,
                 ["rewards"] = {
                     [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
@@ -177,7 +178,7 @@ Config.Banks = {
             [6] = {
                 ["coords"] = vector3(149.1, -1051.4, 29.9),
                 ["size"] = vec3(0.30, 0.5, 0.65),
-                ["rotation"] = 159.75,
+                ["rotation"] = 250.0,
                 ["rewards"] = {
                     [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
@@ -185,23 +186,23 @@ Config.Banks = {
             [7] = {
                 ["coords"] = vector3(146.9, -1050.6, 30.1),
                 ["size"] = vec3(0.30, 0.5, 0.65),
-                ["rotation"] = 159.75,
+                ["rotation"] = 250.0,
                 ["rewards"] = {
                     [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [8] = {
-                ["coords"] = vector3(146.2, -1049.2, 29.9),
+                ["coords"] = vector3(146.24, -1049.24, 29.9),
                 ["size"] = vec3(0.30, 0.5, 0.65),
-                ["rotation"] = 69.75,
+                ["rotation"] = 335.0,
                 ["rewards"] = {
                     [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
             },
             [9] = {
-                ["coords"] = vector3(146.75, -1047.75, 29.8),
+                ["coords"] = vector3(146.79, -1047.79, 29.8),
                 ["size"] = vec3(0.30, 0.5, 0.65),
-                ["rotation"] = 69.75,
+                ["rotation"] = 335.0,
                 ["rewards"] = {
                     [1] = { item = "money", amount = math.random(2250, 3750)}
                 }
@@ -210,7 +211,7 @@ Config.Banks = {
     },
     [3] = {
         ["label"] = "Great Ocean Highway Fleeca",
-        ["coords"] = vector3(-2956.60, 481.71, 15.69),
+        ["coords"] = vector3(-2956.56, 482.09, 15.94),
         ["security"] = {
             pedModel = "cs_casey",
             spawnLocation = vector4(-2960.77, 478.65, 15.69, 177.21),
@@ -304,7 +305,7 @@ Config.Banks = {
     },
     [4] = {
         ["label"] = "Hawick Drive Fleeca",
-        ["coords"] = vector3(-353.86, -55.29, 49.03),
+        ["coords"] = vector3(-353.56, -55.50, 49.24),
         ["security"] = {
             pedModel = "cs_casey",
             spawnLocation = vector4(-355.58, -50.44, 49.03, 98.7),
@@ -398,7 +399,7 @@ Config.Banks = {
     },
     [5] = {
         ["label"] = "Del Perro Fleeca",
-        ["coords"] = vector3(-1210.82, -336.59, 37.78),
+        ["coords"] = vector3(-1210.48, -336.42, 38.01),
         ["security"] = {
             pedModel = "cs_casey",
             spawnLocation = vector4(-1215.46, -334.55, 37.77, 98.7),
@@ -492,7 +493,7 @@ Config.Banks = {
     },
     [6] = {
         ["label"] = "Sandy Fleeca",
-        ["coords"] = vector3(1176.02, 2712.86, 38.08),
+        ["coords"] = vector3(1175.69, 2712.88, 38.33),
         ["security"] = {
             pedModel = "cs_casey",
             spawnLocation = vector4(1179.27, 2708.9, 38.08, 241.55),

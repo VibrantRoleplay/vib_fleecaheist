@@ -23,11 +23,11 @@ I haven't got that far yet and wanted to release this resource to get some early
 
 # Why is there no middle table loot like other bank heist resources?
 
-Fleeca banks are small banks, with small holdings. The table in the middle would typically be used to stand stuff on when openeing your own safety deposit box. NOT for storingmasses of cash
+Fleeca banks are small banks, with small holdings. The table in the middle would typically be used to stand stuff on when openeing your own safety deposit box. NOT for storing masses of cash
 
 # Why isn't there any cash trolleys?
 
-We're aiming for a more realistic feel on some of our resources and as such, you'd never wander into a small bank and see trolleys of cash randomly sitting around
+It is due to be added but falls way down on the list of things to do
 
 # Why aren't you using [marked_bills] for your currency of dirty money?
 

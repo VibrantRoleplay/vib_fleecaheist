@@ -75,12 +75,13 @@ end)
 
 RegisterServerEvent('banks:server:OpenDoor', function(data, mins)
     if exports.ox_inventory:RemoveItem(source, Config.HackerItem, 1) then
-        TriggerClientEvent('banks:client:OpenDoor', -1, data.bankInfo)
         TriggerClientEvent('ox_lib:alertDialog', source, {
             header = "Current Security Level: "..bankSecurity[data.bankInfo.label].level,
-            content = 'Time Until Doors Close: '..mins..' mins',
+            content = "The vault will open in about "..Config.DoorOpenDelayInSeconds.." seconds\nYou'll have "..mins.." minute/s until the vault closes",
             centered = true
         })
+        Wait((Config.DoorOpenDelayInSeconds * 1000))
+        TriggerClientEvent('banks:client:OpenDoor', -1, data.bankInfo)
         TriggerClientEvent('banks:client:CreateLockerZones', -1, data)
         TriggerEvent('banks:server:CloseDoor', data, mins)
         bankSecurity[data.bankInfo.label].hasBeenRobbed = true

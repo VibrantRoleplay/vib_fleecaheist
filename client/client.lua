@@ -341,7 +341,7 @@ CreateThread(function()
     for k, v in pairs(Config.Banks) do
         local zone_id = exports.ox_target:addSphereZone({
             coords = v.coords,
-            radius = 0.5,
+            radius = 0.3,
             debug = Config.Debug,
             options = {
                 {
