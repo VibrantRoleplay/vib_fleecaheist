@@ -7,7 +7,7 @@ Fleeca bank heist resource
 - ox_lib
 - ox_inventory
 - ox_target
-- ps-ui
+- boii_minigames
 
 # What does resource provide?
 
@@ -23,7 +23,7 @@ I haven't got that far yet and wanted to release this resource to get some early
 
 # Why is there no middle table loot like other bank heist resources?
 
-Fleeca banks are small banks, with small holdings. The table in the middle would typically be used to stand stuff on when openeing your own safety deposit box. NOT for storing masses of cash
+Fleeca banks are small banks, with small holdings. The table in the middle would typically be used to stand stuff on when opening your own safety deposit box NOT for storing masses of cash
 
 # Why isn't there any cash trolleys?
 
@@ -44,3 +44,7 @@ https://github.com/meta-hub/fivem-drilling?tab=readme-ov-file
 https://github.com/meta-hub/meta_libs/releases
 
 Both of these are required for the mini game to work - If you'd rather stick with the progressbar then uncomment the progress bar code block from the client/client file and re-comment out the drilling block
+
+# HACKING MINIGAMES REQUIREMENT
+
+https://github.com/boiidevelopment/boii_minigames?tab=GPL-3.0-1-ov-file

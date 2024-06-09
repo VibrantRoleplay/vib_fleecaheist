@@ -62,7 +62,12 @@ RegisterNetEvent('banks:client:keypad', function(data)
     local copCount = lib.callback.await('banks:server:CheckCopCount', false)
     
     if copCount >= Config.Cops then
-        exports['ps-ui']:Thermite(function(success)
+        exports['boii_minigames']:chip_hack({
+            style = 'default', -- Style template
+            loading_time = 8000, -- Total time to complete loading sequence in (ms)
+            chips = math.random(4, 6), -- Amount of chips required to find
+            timer = 15000 -- Total allowed game time in (ms)
+        }, function(success)
             if success then
                 if bankSecurity.level == 0 then timeLeft = 15 end 
                 if bankSecurity.level == 1 then timeLeft = 13 end 
@@ -81,7 +86,7 @@ RegisterNetEvent('banks:client:keypad', function(data)
                     type = 'error'
                 })
             end
-        end, 10, 5, 5)
+        end)
     else
         lib.notify({
             title = 'Attention',
